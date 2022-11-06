@@ -1,6 +1,6 @@
 package org.example;
 
-public class MyStack {
+public class MyStack implements Stackable {
     StackMessages stackMessages = new StackMessages();
     private int arrayStack[];
     private int top;
@@ -12,11 +12,13 @@ public class MyStack {
         top = -1;
     }
 
-    //Перевірки на переповнення і пустоту стеку
-    public boolean stackIsFull() { return top == size - 1; }
+    @Override
     public boolean stackIsEmpty() { return (top == -1); }
 
-    //Додавання та віднімання елементів щодо стеку
+    @Override
+    public boolean stackIsFull() { return top == size - 1; }
+
+    @Override
     public void addElement(int element) {
         if (!stackIsFull()) {
             System.out.println(stackMessages.additionMessage + element);
@@ -24,14 +26,15 @@ public class MyStack {
         } else System.out.println(stackMessages.fullStackMessage);
     }
 
-    public void deleteElement(){
+    @Override
+    public void deleteElement() {
         if (!stackIsEmpty()) {
             System.out.println(stackMessages.removalMessage + arrayStack[top]);
             arrayStack[top] = top--;
         } else System.out.println(stackMessages.emptyStackMessage);
     }
 
-    //Вивід верхнього елементу
+    @Override
     public String topElement() {
         if (!stackIsEmpty()) return stackMessages.topElementMessage + arrayStack[top];
         else return stackMessages.emptyStackMessage;

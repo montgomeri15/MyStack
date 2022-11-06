@@ -11,4 +11,8 @@ package org.example;
 
 public interface Stackable {
     public boolean stackIsEmpty();
+    public boolean stackIsFull();
+    public void addElement(int element);
+    public void deleteElement();
+    public String topElement();
 }
