@@ -33,8 +33,6 @@ public class App {
         myStack.deleteElement();
         myStack.deleteElement();
         myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
 
         System.out.println(myStack.topElement());
     }

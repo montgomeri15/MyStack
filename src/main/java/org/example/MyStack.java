@@ -2,9 +2,9 @@ package org.example;
 
 public class MyStack implements Stackable {
     StackMessages stackMessages = new StackMessages();
-    private int arrayStack[];
-    private int top;
-    private int size;
+    public int arrayStack[];
+    public int top;
+    public int size;
 
     public MyStack(int size) {
         this.size = size;
@@ -13,14 +13,14 @@ public class MyStack implements Stackable {
     }
 
     @Override
-    public boolean stackIsEmpty() { return (top == -1); }
+    public boolean isEmpty() { return (top == -1); }
 
     @Override
-    public boolean stackIsFull() { return top == size - 1; }
+    public boolean isFull() { return top == size - 1; }
 
     @Override
     public void addElement(int element) {
-        if (!stackIsFull()) {
+        if (!isFull()) {
             System.out.println(stackMessages.additionMessage + element);
             arrayStack[++top] = element;
         } else System.out.println(stackMessages.fullStackMessage);
@@ -28,7 +28,7 @@ public class MyStack implements Stackable {
 
     @Override
     public void deleteElement() {
-        if (!stackIsEmpty()) {
+        if (!isEmpty()) {
             System.out.println(stackMessages.removalMessage + arrayStack[top]);
             arrayStack[top] = top--;
         } else System.out.println(stackMessages.emptyStackMessage);
@@ -36,7 +36,7 @@ public class MyStack implements Stackable {
 
     @Override
     public String topElement() {
-        if (!stackIsEmpty()) return stackMessages.topElementMessage + arrayStack[top];
+        if (!isEmpty()) return stackMessages.topElementMessage + arrayStack[top];
         else return stackMessages.emptyStackMessage;
     }
 }
