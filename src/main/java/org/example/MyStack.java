@@ -1,5 +1,8 @@
 package org.example;
 
+import custom.exceptions.EmptyStackException;
+import custom.exceptions.FullStackException;
+
 public class MyStack implements Stackable {
     StackMessages stackMessages = new StackMessages();
     public int arrayStack[];
@@ -19,24 +22,31 @@ public class MyStack implements Stackable {
     public boolean isFull() { return top == size - 1; }
 
     @Override
-    public void addElement(int element) {
-        if (!isFull()) {
-            System.out.println(stackMessages.additionMessage + element);
+    public void addElement(int element) throws FullStackException {
+        try {
             arrayStack[++top] = element;
-        } else System.out.println(stackMessages.fullStackMessage);
+            System.out.println(stackMessages.additionMessage + element);
+        } catch (ArrayIndexOutOfBoundsException e){
+            throw new FullStackException();
+        }
     }
 
     @Override
-    public void deleteElement() {
-        if (!isEmpty()) {
+    public void deleteElement() throws EmptyStackException {
+        try{
             System.out.println(stackMessages.removalMessage + arrayStack[top]);
             arrayStack[top] = top--;
-        } else System.out.println(stackMessages.emptyStackMessage);
+        } catch (ArrayIndexOutOfBoundsException e){
+            throw new EmptyStackException();
+        }
     }
 
     @Override
-    public String topElement() {
-        if (!isEmpty()) return stackMessages.topElementMessage + arrayStack[top];
-        else return stackMessages.emptyStackMessage;
+    public String topElement() throws EmptyStackException {
+        try {
+            return stackMessages.topElementMessage + arrayStack[top];
+        } catch (ArrayIndexOutOfBoundsException e){
+            throw new EmptyStackException();
+        }
     }
 }

@@ -1,10 +1,13 @@
 package org.example;
-import org.junit.Test;
+import custom.exceptions.EmptyStackException;
+import custom.exceptions.FullStackException;
+import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AppTest {
     @Test
-    public void stackIsCreatedTest(){
+    void stackIsCreatedTest(){
         MyStack myStack = new MyStack(10);
 
         assertThat(myStack.size).isEqualTo(10);
@@ -13,14 +16,14 @@ public class AppTest {
     }
 
     @Test
-    public void stackIsEmptyTest(){
+    void stackIsEmptyTest(){
         MyStack myStack = new MyStack(10);
 
         assertThat(myStack.isEmpty()).isTrue();
     }
 
     @Test
-    public void stackIsFullTest(){
+    void stackIsFullTest() throws FullStackException {
         MyStack myStack = new MyStack(2);
 
         myStack.addElement(3);
@@ -30,7 +33,7 @@ public class AppTest {
     }
 
     @Test
-    public void elementIsAdded(){
+    void elementIsAdded() throws FullStackException {
         MyStack myStack = new MyStack(2);
 
         myStack.addElement(3);
@@ -41,7 +44,7 @@ public class AppTest {
     }
 
     @Test
-    public void elementIsDeleted(){
+    void elementIsDeleted() throws EmptyStackException, FullStackException {
         MyStack myStack = new MyStack(5);
 
         myStack.addElement(3);
@@ -56,25 +59,13 @@ public class AppTest {
     }
 
     @Test
-    public void topElementIsEmpty(){
+    void topElementExists() throws EmptyStackException, FullStackException {
         MyStack myStack = new MyStack(10);
         StackMessages stackMessages = new StackMessages();
-        String ANSI_RED = "\u001B[31m";
-
-        assertThat(myStack.topElement()).isEqualTo(stackMessages.emptyStackMessage);
-        assertThat(myStack.topElement()).isEqualTo(ANSI_RED + "Стек пустий!");
-    }
-
-    @Test
-    public void topElementExists(){
-        MyStack myStack = new MyStack(10);
-        StackMessages stackMessages = new StackMessages();
-        String ANSI_RESET = "\u001B[0m";
 
         myStack.addElement(3);
         myStack.addElement(5);
 
         assertThat(myStack.topElement()).isEqualTo(stackMessages.topElementMessage + 5);
-        assertThat(myStack.topElement()).isEqualTo(ANSI_RESET + "Верхній елемент стеку:\t" + 5);
     }
 }

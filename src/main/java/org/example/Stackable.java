@@ -1,9 +1,12 @@
 package org.example;
 
+import custom.exceptions.EmptyStackException;
+import custom.exceptions.FullStackException;
+
 public interface Stackable {
-    public boolean isEmpty();
-    public boolean isFull();
-    public void addElement(int element);
-    public void deleteElement();
-    public String topElement();
+    boolean isEmpty();
+    boolean isFull();
+    void addElement(int element) throws FullStackException;
+    void deleteElement() throws EmptyStackException;
+    String topElement() throws EmptyStackException;
 }
