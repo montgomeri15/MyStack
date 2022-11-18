@@ -76,7 +76,7 @@ public class AppTest {
 
         myStack.addElement(3);
         myStack.addElement(5);
-        int testStackElement = myStack.getStackElement(1);
+        int testStackElement = myStack.getStackElement(1).get();
 
         assertThat(testStackElement).isEqualTo(5);
     }

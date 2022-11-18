@@ -11,5 +11,5 @@ public interface Stackable {
     void addElement(int element) throws FullStackException;
     void deleteElement() throws EmptyStackException;
     String topElement() throws EmptyStackException;
-    int getStackElement(int element);
+    Optional<Integer> getStackElement(int element);
 }

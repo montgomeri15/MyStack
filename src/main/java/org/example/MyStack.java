@@ -53,8 +53,8 @@ public class MyStack implements Stackable {
     }
 
     @Override
-    public int getStackElement(int element) {
+    public Optional<Integer> getStackElement(int element) {
         Optional<Integer> opElement = Optional.of(arrayStack[element]);
-        return opElement.get();
+        return opElement;
     }
 }
