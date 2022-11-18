@@ -19,9 +19,11 @@ public class App {
         myStack.addElement(81);
         myStack.addElement(91);
         myStack.addElement(101);
-        //myStack.addElement(111);
-        //myStack.addElement(121);
 
         System.out.println(myStack.topElement());
+
+        //The problem is, that we can get only ArrayIndexOutOfBoundsException,
+        //so Optional is completely irrelevant to an element fetch task ¯\_(ツ)_/¯
+        System.out.println(myStack.getStackElement(5));
     }
 }

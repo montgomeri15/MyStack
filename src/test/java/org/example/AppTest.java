@@ -4,6 +4,7 @@ import custom.exceptions.FullStackException;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AppTest {
     @Test
@@ -67,5 +68,26 @@ public class AppTest {
         myStack.addElement(5);
 
         assertThat(myStack.topElement()).isEqualTo(stackMessages.topElementMessage + 5);
+    }
+
+    @Test
+    void getCorrectStackElement() throws FullStackException {
+        MyStack myStack = new MyStack(10);
+
+        myStack.addElement(3);
+        myStack.addElement(5);
+        int testStackElement = myStack.getStackElement(1);
+
+        assertThat(testStackElement).isEqualTo(5);
+    }
+
+    @Test
+    public void getIncorrectStackElement() {
+        MyStack myStack = new MyStack(10);
+
+        assertThrows(ArrayIndexOutOfBoundsException.class,
+                ()->{
+                    myStack.getStackElement(-1);
+                });
     }
 }

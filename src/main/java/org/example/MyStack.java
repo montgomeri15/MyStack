@@ -51,4 +51,10 @@ public class MyStack implements Stackable {
             throw new EmptyStackException();
         }
     }
+
+    @Override
+    public int getStackElement(int element) {
+        Optional<Integer> opElement = Optional.of(arrayStack[element]);
+        return opElement.get();
+    }
 }
