@@ -3,6 +3,8 @@ package org.example;
 import custom.exceptions.EmptyStackException;
 import custom.exceptions.FullStackException;
 
+import java.util.Optional;
+
 public class App {
     public static void main( String[] args ) throws EmptyStackException, FullStackException {
         MyStack myStack = new MyStack(10);
@@ -19,22 +21,6 @@ public class App {
         myStack.addElement(101);
         //myStack.addElement(111);
         //myStack.addElement(121);
-
-        System.out.println(myStack.topElement());
-
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
-        myStack.deleteElement();
 
         System.out.println(myStack.topElement());
     }

@@ -3,6 +3,8 @@ package org.example;
 import custom.exceptions.EmptyStackException;
 import custom.exceptions.FullStackException;
 
+import java.util.Optional;
+
 public class MyStack implements Stackable {
     StackMessages stackMessages = new StackMessages();
     public int arrayStack[];
